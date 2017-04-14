@@ -71,10 +71,12 @@
                 var ly;
             	if (x < 232 || x > 735) {
                 	if (y < 577 || y > 692) {
+                    	console.log("No error");
                     	return false;
                     }
             	}
             
+               	console.log("Error!!!!");
             	return true;
             }
             
@@ -85,14 +87,17 @@
         	function move_character() {
                 character = document.getElementById("character_1");
                 container = document.getElementById("container");
-
+				
 
 				if (new_direction == "left") {
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
                     old_x = old_x - 10;
-					if (old_x > 30) {
-                		character.style.left = old_x;
+                    if (!check_map(old_x,old_y)) {
+                    	
+                      if (old_x > 30) {
+                        character.style.left = old_x;
+                      }
                     }
                 
                 } else if (new_direction == "right") {
